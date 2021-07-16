@@ -1,24 +1,33 @@
-# README
+# Example RabbitMQ PubSub Implementation using Bunny & Sneakers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Install [RabbitMQ via homebrew](https://www.rabbitmq.com/install-homebrew.html) (can use a [Docker image](https://hub.docker.com/_/rabbitmq) too if you'd like).
 
-Things you may want to cover:
 
-* Ruby version
+Bundle the gems:
 
-* System dependencies
+```
+bundle
+```
 
-* Configuration
+Install foreman:
 
-* Database creation
+```
+gem install foreman
+```
 
-* Database initialization
+Run your RabbitMQ service:
 
-* How to run the test suite
+```
+brew services start rabbitmq
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the server and sneakers worker via foreman:
 
-* Deployment instructions
+```
+foreman start
+```
 
-* ...
+Send a POST request to the `/bids` endpoint and inspect your sneakers logs:
+```bash
+curl -X POST localhost:5000/bids
+```
